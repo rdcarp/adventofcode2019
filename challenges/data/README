@@ -1,0 +1,7 @@
+# Data
+
+This directory contains files of data that is provided for each of the daily challenges.
+
+Naming convention is `day{x}[-part2]`.
+
+Accessible using `common.get_input`.
