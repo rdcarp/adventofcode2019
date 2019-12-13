@@ -19,10 +19,7 @@ def _compute_int_code(sequence):
         a, b, c, d = sequence[n:m]
 
         try:
-            print(a, b, c)
-            print(op_code_functions[a](b, c))
-            print(sequence[0:4])
-            sequence[d] = op_code_functions[a](b, c)
+            sequence[d] = op_code_functions[a](sequence[b], sequence[c])
         except KeyError as err:
             print("Bad op code: %r", a)
         except ZeroDivisionError:  # lol
@@ -34,19 +31,13 @@ def _compute_int_code(sequence):
 
 
 def _tests():
-    # assert _compute_int_code([int(i) for i in "1,1,1,4,99,5,6,0,99".split(",")]) == [
-    #     int(i) for i in "30,1,1,4,2,5,6,0,99".split(",")
-    # ]
-
-    assert _compute_int_code([int(i) for i in "2,4,4,5,99,0".split(",")]) == [
-        int(i) for i in "2,4,4,5,99,9801".split(",")
+    assert _compute_int_code([int(i) for i in "1,1,1,4,99,5,6,0,99".split(",")]) == [
+        int(i) for i in "30,1,1,4,2,5,6,0,99".split(",")
     ]
-    # 
 
 
 def main():
     _tests()
-
     input_sequence = get_number_sequence(DAY)
 
     # Reset state prior to fire.
